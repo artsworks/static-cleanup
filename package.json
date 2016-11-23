@@ -1,0 +1,13 @@
+{
+  "name": "un-css",
+  "version": "0.0.1",
+  "repository": "git@github.com:TabDigital/keno-web-static.git",
+  "dependencies": {},
+  "scripts": {},
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^2.0.13",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-uncss": "^1.0.6"
+  }
+}
