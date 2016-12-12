@@ -11,3 +11,5 @@ Minify HTML and CSS and remove unused CSS classes
 `gulp minpng` to minified PNG files
  
 `gulp minimg` to minified any other image files 
+
+`gulp sprites` to create sprites from image files 
