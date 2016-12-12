@@ -22,7 +22,7 @@ gulp.task('mincss', function () {
 
 // minify html
 var htmlmin = require('gulp-htmlmin');
-gulp.task('minhtml', function() {
+gulp.task('minhtml', function () {
     return gulp.src(fileHTML)
         .pipe(htmlmin({collapseWhitespace: true}))
         .pipe(gulp.dest('./out'));
@@ -32,7 +32,7 @@ gulp.task('minhtml', function() {
 var imagemin = require('gulp-imagemin');
 gulp.task('minpng', function () {
     gulp.src(fileImg + '/*.png')
-        .pipe(imagemin([imagemin.optipng({optimizationLevel: 7})],{
+        .pipe(imagemin([imagemin.optipng({optimizationLevel: 7})], {
             verbose: true
         }))
         .pipe(gulp.dest('./out/img'));
@@ -44,4 +44,16 @@ gulp.task('minimg', function () {
     gulp.src(fileImg + '/*.png')
         .pipe(image())
         .pipe(gulp.dest('./out/img'));
+});
+
+// convert images to sprite
+// var gulpif = require('gulp-if');
+var sprity = require('sprity');
+
+gulp.task('sprites', function () {
+    return sprity.src({
+        src: fileImg + '/*.{png,jpg}',
+        style: './sprite.scss',
+        processor: 'sass'})
+        .pipe(gulp.dest('./out/img/'), gulp.dest('./out/css/'))
 });
