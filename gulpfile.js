@@ -1,4 +1,5 @@
 var fileHTML = './files/dummy.html';
+var fileImg = './files/img';
 var gulp = require('gulp');
 
 // remove unused css
@@ -25,4 +26,22 @@ gulp.task('minhtml', function() {
     return gulp.src(fileHTML)
         .pipe(htmlmin({collapseWhitespace: true}))
         .pipe(gulp.dest('./out'));
+});
+
+// minify png
+var imagemin = require('gulp-imagemin');
+gulp.task('minpng', function () {
+    gulp.src(fileImg + '/*.png')
+        .pipe(imagemin([imagemin.optipng({optimizationLevel: 7})],{
+            verbose: true
+        }))
+        .pipe(gulp.dest('./out/img'));
+});
+
+// minify images
+var image = require('gulp-image');
+gulp.task('minimg', function () {
+    gulp.src(fileImg + '/*.png')
+        .pipe(image())
+        .pipe(gulp.dest('./out/img'));
 });
